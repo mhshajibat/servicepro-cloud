@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServicePro Cloud | Service Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">SP</div>
+      <div>
+        <h1>ServicePro Cloud</h1>
+        <p>Service Business Manager</p>
+      </div>
+    </div>
+    <span class="status">● Local Demo</span>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">BUSINESS OVERVIEW</p>
+        <h2>Service Business Dashboard</h2>
+        <p>Manage your AC and refrigerator service orders.</p>
+      </div>
+      <div class="today" id="today"></div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <p>Total Orders</p>
+        <h3 id="totalOrders">0</h3>
+      </article>
+
+      <article class="stat-card">
+        <p>Total Service Value</p>
+        <h3 id="totalRevenue">৳0</h3>
+      </article>
+
+      <article class="stat-card">
+        <p>Pending Orders</p>
+        <h3 id="pendingOrders">0</h3>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <h2>New Service Order</h2>
+          <p>Enter customer information below.</p>
+        </div>
+      </div>
+
+      <form id="orderForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="customerName">Customer Name *</label>
+            <input
+              id="customerName"
+              name="customerName"
+              type="text"
+              placeholder="e.g. Rahim Uddin"
+              maxlength="80"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone Number *</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              placeholder="e.g. 01712345678"
+              maxlength="20"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="serviceType">Service Type *</label>
+            <select id="serviceType" name="serviceType" required>
+              <option value="">Select a service</option>
+              <option value="AC Servicing">AC Servicing</option>
+              <option value="AC Installation">AC Installation</option>
+              <option value="Fridge Repair">Fridge Repair</option>
+              <option value="Gas Charging">Gas Charging</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="price">Service Price (BDT) *</label>
+            <input
+              id="price"
+              name="price"
+              type="number"
+              min="0"
+              max="1000000"
+              step="1"
+              placeholder="e.g. 800"
+              required
+            >
+          </div>
+
+          <div class="field full-width">
+            <label for="address">Customer Address</label>
+            <textarea
+              id="address"
+              name="address"
+              rows="2"
+              maxlength="300"
+              placeholder="Enter area and full address"
+            ></textarea>
+          </div>
+        </div>
+
+        <button class="primary-btn" type="submit">
+          + Add Order
+        </button>
+
+        <p
+          id="formMessage"
+          class="form-message"
+          role="status"
+          aria-live="polite"
+        ></p>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading order-heading">
+        <div>
+          <h2>Service Orders</h2>
+          <p>Orders saved in this browser.</p>
+        </div>
+
+        <button id="clearAll" class="secondary-btn" type="button">
+          Clear All
+        </button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Service</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="ordersList"></tbody>
+        </table>
+      </div>
+
+      <p id="emptyMessage" class="empty-message">
+        No orders yet. Add your first service order.
+      </p>
+    </section>
+
+    <footer>
+      ServicePro Cloud · Learning Project · Week 1
+    </footer>
+  </main>
+</body>
+</html>
